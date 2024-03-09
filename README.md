@@ -4,7 +4,7 @@
 
 Imagine diving into the fantasy world of Andrzej Sapkowski's Witcher series, where Geralt's adventures unfold like pages in a magical tome. This project isn't just a nod to the complexity of Sapkowski's characters and worlds. It's also a journey through my own experiences with this story. As I navigated the language of Overleaf with all the grace of a novice powers, this endeavor became a testament to my firs experiences and discernment. I'm sharing it here not just as a humble brag, but as a guiding light for fellow travelers just starting their Overleaf quest.
 
-### LICENCED PROJECT is subject to non-replication and non-modification.
+### Licenced project is subject to non-replication and non-modification.
 
 **GNU AFFERO GENERAL PUBLIC LICENSE**
 
