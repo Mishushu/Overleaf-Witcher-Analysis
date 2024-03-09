@@ -2,7 +2,9 @@
 
 School project created on Overleaf, as an analyze of the Witcher Saga and short stories by Andrzej Sapkowski.
 
-GNU AFFERO GENERAL PUBLIC LICENSE PROJECT
+The licensed project is subject to non-replication and non-modification.
+
+GNU AFFERO GENERAL PUBLIC LICENSE
 
 Version 3, 19 November 2007
 
