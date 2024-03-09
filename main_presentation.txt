@@ -1,0 +1,341 @@
+\documentclass[xcolor=dvipsnames]{beamer}
+
+\definecolor{GECBlue}{RGB}{0, 150, 200}
+\definecolor{darkerGrey}{RGB}{190, 190, 190}
+\usecolortheme[named=GECBlue]{structure}
+
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{graphicx}
+\usepackage{pifont}
+\usepackage{subfig}
+\usepackage{array}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[cjk]{kotex}
+\usepackage{epsfig}
+\usepackage[T1]{fontenc}
+
+\usepackage{longtable}
+
+\usepackage{booktabs}
+
+\usepackage{pstricks}
+\usepackage{soul}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{etoolbox}
+\usepackage{setspace}
+\usepackage{cancel}
+\usepackage{media9}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes.multipart}
+\usetikzlibrary{shapes,decorations,arrows,shapes,arrows.meta,fit,positioning, automata, positioning}
+
+\usepackage{csquotes}
+\usepackage[style=apa,sortcites=true,sorting=ydnt,backend=biber,uniquename=false]{biblatex}
+\DeclareLanguageMapping{american}{american-apa}
+\addbibresource{bibliography.bib}
+\DeclareCiteCommand{\citeshort}
+  {\boolfalse{citetracker}%
+   \boolfalse{pagetracker}%
+   \DeclareNameAlias{labelname}{first-last}%
+   \usebibmacro{prenote}}
+  {\ifciteindex
+     {\indexnames{labelname}}
+     {}%
+   (\printnames{shortauthor},
+   {\printdate})
+   }
+
+  {\usebibmacro{postnote}}
+
+\setbeamertemplate{bibliography item}{}
+
+\setbeamertemplate{headline}{
+   \begin{beamercolorbox}[wd=\paperwidth,center]{}
+        \textcolor{GECBlack}{\rule{\paperwidth}{0.2cm}}
+        \includegraphics[scale=0.05]{wilk.png}
+        \begin{tikzpicture}
+            \draw[dotted, thick] (0.23,0) -- (\textwidth-0.23cm,0);
+        \end{tikzpicture}
+   \end{beamercolorbox}
+}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamercolor{page number in head/foot}{fg=darkerGrey}
+\setbeamertemplate{footline}{%
+    \begin{center}
+        \usebeamercolor[fg]{page number in head/foot}%
+        \usebeamerfont{page number in head/foot}%
+        \insertframenumber\hfill\par%
+        \vspace{0.2cm} % Adjust vertical spacing as needed
+    \end{center}
+}
+
+\setbeamertemplate{background canvas}{
+    \begin{tikzpicture}[remember picture, overlay]
+        \fill [color=GECBlue] (current page.north west) circle (2cm);
+        \fill [color=white] (2.0cm, -2.0cm) circle (1.8cm);
+        \fill [color=GECBlue] (current page.north east) circle (2cm);
+        \fill [color=white] (10.80cm, -2.0cm) circle (1.8cm);
+        \node[anchor=north west,inner sep=0pt,outer sep=0pt] at (current page.north west) 
+            {\textcolor{GECBlue}{\rule{0.2cm}{\paperwidth}}}; % Top-left corner
+        \node[anchor=north east,inner sep=0pt,outer sep=0pt] at (current page.north east) 
+            {\textcolor{GECBlue}{\rule{0.2cm}{\paperwidth}}}; % Top-right corner
+        \node[anchor=south west,inner sep=0pt,outer sep=0pt] at (current page.south west) 
+            {\textcolor{GECBlue}{\rule{\paperwidth}{0.2cm}}}; % Bottom-left corner
+        \node[anchor=south east,inner sep=0pt,outer sep=0pt] at (current page.south east) 
+            {\textcolor{GECBlue}{\rule{\paperwidth}{0.2cm}}}; % Bottom-right corner
+    \end{tikzpicture}
+}
+
+\tikzstyle{every picture}+=[remember picture]
+
+\setlength{\parindent}{0pt}
+\setlength{\leftmargini}{12pt} % Adjusts first level indentation
+\setlength{\leftmarginii}{12pt} % Adjusts second level indentation
+\setlength{\leftmarginiii}{12pt} % Adjusts second level indentation
+\setbeamersize{text margin right=0.5cm}
+\setbeamersize{text margin left=0.5cm}
+
+
+\setbeamerfont{normal text}{family=\rmfamily, size=\fontsize{10}{12}}
+\AtBeginDocument{\usebeamerfont{normal text}}
+
+\setbeamerfont{title}{family=\rmfamily, series=\bfseries, size=\fontsize{14}{16}}
+\setbeamerfont{author}{family=\rmfamily, size=\fontsize{10}{12}}
+\setbeamerfont{institute}{family=\rmfamily, size=\fontsize{10}{12}}
+\setbeamerfont{date}{family=\rmfamily, size=\fontsize{10}{12}}
+\setbeamerfont{subtitle}{family=\rmfamily}
+\setbeamerfont{section in toc}{family=\rmfamily, size=\fontsize{11}{13}}
+\setbeamercolor{section in toc}{fg=black}
+\setbeamerfont{subsection in toc}{family=\rmfamily, size=\fontsize{10}{12}}
+\setbeamercolor{subsection in toc}{fg=black}
+\setbeamerfont{section name}{family=\rmfamily}
+\setbeamerfont{subsection name}{family=\rmfamily}
+\setbeamerfont{frametitle}{family=\rmfamily, series=\bfseries, size=\fontsize{18}{20}}
+
+% Custom template for title page
+\defbeamertemplate*{title page}{customized}[1][]
+{
+  \begin{beamercolorbox}[sep=8pt,center,#1]{title}
+    \usebeamerfont{title}\inserttitle\par%
+  \end{beamercolorbox}
+  \vfill
+  \begin{flushright}
+   \usebeamerfont{author}\insertauthor\par
+    \vspace{0.5cm}
+    \usebeamerfont{institute}\insertinstitute\par
+    \vspace{0.5cm}
+    \usebeamerfont{date}\insertdate\par
+  \end{flushright}
+}
+
+% Command to center the frame title
+\setbeamertemplate{frametitle}{%
+    \begin{centering}
+        \insertframetitle\par
+    \end{centering}
+}
+
+\makeatletter
+\patchcmd{\beamer@sectionintoc}{\vskip0.25em}{\vskip0.1em}{}{}
+\setbeamertemplate{subsection in toc}{\leavevmode \leftskip=1em \hangindent=0.55cm \inserttocsubsection\par}
+\makeatother
+
+\setbeamertemplate{itemize item}[default] % Level 1
+\setbeamertemplate{itemize subitem}[circle] % Level 2
+\setbeamertemplate{itemize subsubitem}{\textendash} % Level 3
+\setbeamertemplate{enumerate item}[default] % Level 1
+
+
+\title[]{Analysis: Witcher Saga and Short Fiction}
+\author[Katarzyna Bednarz]{Katarzyna Bednarz} 
+\date{\textit{\today}}
+
+
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\vspace{0.5cm}
+	\begin{columns}
+		\begin{column}{0.95\linewidth}
+			\frametitle{Table of Contents}
+			\tableofcontents
+		\end{column}
+	\end{columns}
+\end{frame}
+
+%% sections start from here
+\section{1. Introduction}
+\begin{frame}{\textit{1. Introduction}}
+    \begin{itemize}
+        \item The book delves into the life of the Witcher named Geralt, who perceives himself as a solitary figure during the day. However, despite his self-perception, he inadvertently draws people towards him. His intelligence and wit serve as a magnetic force. Nevertheless, he occasionally exhibits bitterness and pessimism due to his past experiences. While he is engaged in the daily pursuit of hunting monsters for a fee, he holds the belief that the true monsters in the world are, in fact, human beings.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{\textit{1. Introduction}}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.25\linewidth]{1st-edition.jpg}
+\caption{\label{fig:geralt}First edition of the Witcher books}
+\end{figure}
+    
+\end{frame}{}
+
+\section{2. Narrative Overview}
+\subsection{1.1 How it all started}
+\begin{frame}{\textit{1.1 How it all started}}
+    \begin{itemize}
+        \item Andrzej Sapkowski, the author of the Witcher saga and short stories, reveals that his motivation to write and publish the book stemmed from his son. The initial publications appeared as individual stories in the monthly Fantastyka magazine in 1986. The Witcher garnered substantial enthusiasm and interest from readers following regular releases. As a result, two volumes of short stories were created, paving the way for subsequent volumes in the Witcher saga.
+        \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{\textit{1.1 How it all started}}
+    \begin{itemize}
+        \item I first encountered the book when a friend lent me the stories to read. Captivated by them, I eagerly sought out the next volumes. My aunt, an avid fantasy fan and collector of Fantastyka magazine, generously made her collectible foiled copies available for me to read. From that moment on, my connection with the series was unwavering. I acquired my own books and regularly revisited them, deriving great joy from each story. My love for The Witcher led me to replay each of the computer games released by CD Projekt Red studio several times. In the following years, I personally collected the first edition of The Witcher and issues of Fantastyka, in which single stories were published. I also shared this passion with my sister, and this multifaceted story firmly took root in my heart.
+    \end{itemize}
+    
+\end{frame}
+
+\subsection{1.2 Wandering Monster Slayer}
+
+\begin{frame}{\textit{1.2 Wandering Monster Slayer}}
+    \begin{itemize}
+
+    \item The life of a Witcher involves constant wandering and risking one's life for a meager reward. During challenging times, people tend to be mistrustful and hesitant to pay for the services of a professional. There are instances when they not only refuse payment but also attempt to rob or negotiate the Witcher's life. Geralt, a Witcher with modest expectations, lives day by day, until he encounters individuals who draw him into various intrigues, romances, and political conflicts.
+    
+    Despite undergoing rigorous tests in childhood that should theoretically strip him of emotions, Geralt harbors a smoldering spark within, enabling him to follow his heart. His path crosses with the sorceress Yennefer, leading to a complex relationship marked by intense passion, anger, sadness, and longing. Cirilla becomes like a daughter to him, while the renowned bard Jaskier, the dwarf Zoltan, and the vampire Regis become akin to brothers.
+    \end{itemize}
+    
+    \end{frame}  
+
+\begin{frame}{\textit{1.2 Wandering Monster Slayer}}
+    \begin{itemize}    
+    As Geralt becomes entangled in political intrigues through a series of events, he is compelled to save his loved ones. In doing so, he makes decisions that have far-reaching consequences.
+    \end{itemize}
+    
+\end{frame}
+
+\subsection{1.3 Characters}
+\begin{frame}{\textit{1.3 Characters}}
+
+    \begin{itemize}
+    The characters in the Witcher book series are intricately complex, each harboring stories that significantly impact the narrative. From Geralt, the stoic monster hunter, to Yennefer, the powerful sorceress with a complex relationship, and Ciri, the princess with a mysterious destiny—each character weaves a tale that profoundly influences the life of the Witcher. Their stories, laden with depth and change, contribute to the rich tapestry of the fantasy world crafted by the author.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{\textit{1.3 Characters}}
+
+ \begin{enumerate}
+      \item Geralt of Rivia - Stoic monster slayer with mutated abilities. \\
+      \item Yennefer of Vengerberg - A powerful sorceress and love interest of Geralt. \\
+      \item Ciri - A princess with a mysterious destiny. \\
+      \item Jaskier - A charismatic and witty bard. \\
+      \item Regis - A vampire, known for his philosophical outlook on life. \\
+      \item Triss - Another sorceress, plays a significant role in the series. \\
+      \item Zoltan - A loyal friend. Helpful with a fight and a bottle. \\
+    \end{enumerate}
+    
+\end{frame}
+\section{3. Summary}
+\begin{frame}{\textit{3. Summary}}
+
+ \begin{itemize}
+    \item The tale of Geralt of Rivia and his companions gained widespread recognition following the launch of the video game series. The initial game came out in 2007, followed by subsequent releases in 2011 and 2015. Presently, the CD Projekt Red studio has initiated the development of the fourth game, but patience is required as it is likely to take a few more years. Andrzej Sapkowski has also revealed his ongoing work on the latest book, offering hope that we will witness another captivating story in the future.
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{\textit{3. Summary}}
+
+\begin{table}
+\centering
+\begin{tabular}{l|r}
+Title & No of Pages \\\hline
+1.The Last Wish & 292 \\
+2.Something Ends, Something Begins & 299 \\
+3.Season of storms & 404 \\
+4.Sword of Destiny & 384 \\
+5.Blood of Elves & 416 \\
+6.Time of Contempt & 352  \\
+7.Baptism of Fire & 464 \\
+8.The Tower of the Swallow & 464 \\
+9.The Lady of the Lake & 531 \\
+\end{tabular}
+\caption{\label{tab:widgets}The Witcher stories and saga}
+\end{table}
+    
+\end{frame}
+
+\section{4. References}
+\begin{frame}[allowframebreaks]{\textit{References}}
+    \begin{thebibliography}{9}
+\bibitem{texbook}
+Andrzej Sapkowski (1993, English edition: 2007) 
+\emph{The Last Wish}
+
+\bibitem{texbook}
+Andrzej Sapkowski (1992, English edition: 2015) 
+\emph{Sword of Destiny}
+
+\bibitem{texbook}
+Andrzej Sapkowski (2000) 
+\emph{Something Ends, Something Begins}
+
+\bibitem{texbook}
+Andrzej Sapkowski (2009) 
+\emph{Blood of Elves}
+
+\bibitem{texbook}
+Andrzej Sapkowski (1995, English edition: 2013) 
+\emph{Time of Contempt}
+
+\bibitem{texbook}
+Andrzej Sapkowski (1996, English edition: 2014) 
+\emph{Baptism of Fire}
+
+\bibitem{texbook}
+Andrzej Sapkowski (11997, English edition: 2016) 
+\emph{The Tower of the Swallow}
+
+\bibitem{texbook}
+Andrzej Sapkowski (1999, English edition: 2017) 
+\emph{The Lady of the Lake}
+
+\bibitem{texbook}
+Andrzej Sapkowski (2013, English edition: 2018) 
+\emph{Season of Storms}
+
+\end{thebibliography}
+\end{frame}
+
+\begin{frame}{}
+\begin{center}
+    \fontsize{18}{20}\color{GECBlue}\textbf{\textit{Thank You}}
+
+\vspace{2cm}
+
+\begin{flushleft}
+\textit{Katarzyna Bednarz \\
+1st year of Computer Science \\
+part-time internet based studies  \\
+}
+\end{flushleft}
+    
+\end{center}
+\end{frame}
+
+\end{document}
