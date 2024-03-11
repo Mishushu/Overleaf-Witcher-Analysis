@@ -82,6 +82,8 @@ Zoltan - A loyal friend. Helpful with a fight and a bottle
 
 ## 3 Books
 
+The Witcher books have been published since the early 1990s. The main series consists of five novels released between 1994 and 1999, while there are also several short story collections. Each book varies in length, with novels typically around 300 to 400 pages and short stories around 200 to 300 pages.
+
 Title / No of Pages
 
 1. The Last Wish 292
