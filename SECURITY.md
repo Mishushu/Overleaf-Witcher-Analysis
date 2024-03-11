@@ -74,3 +74,5 @@ You may copy code between files with identical licensing terms, or between files
 
 Reporting Incompatible Code
 If you happen to find a file in the Mozilla source tree which does not conform to our licensing policy, please report it to the licensing team.
+
+https://www.mozilla.org/en-US/MPL/license-policy/#Filing_Bugs
